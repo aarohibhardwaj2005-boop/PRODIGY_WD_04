@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Web Developer</title>
+  <meta name="description" content="Personal portfolio of a web developer showcasing skills, projects and experience." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #94a3b8;
+      --accent: #7c3aed;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --glass-border: rgba(255,255,255,0.06);
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,#071022 0%, #071126 40%, #072036 100%);}
+
+    /* Container */
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    
+
+    /* Navigation */
+    nav{position:fixed;left:0;right:0;top:16px;z-index:30;backdrop-filter: blur(8px);display:flex;align-items:center;justify-content:center}
+    .nav-inner{width:100%;max-width:1100px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border);border-radius:14px;padding:8px 14px;display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand .logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4c1d95);display:flex;align-items:center;justify-content:center;color:white;font-weight:800}
+    .brand h1{font-size:14px;margin:0}
+    .nav-links{margin-left:auto;display:flex;gap:6px}
+    .nav-links a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px}
+    .nav-links a:hover, .nav-links a.active{background:var(--glass);color:#fff}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:36px;align-items:center;padding-top:90px;padding-bottom:40px}
+    .hero-card{background:linear-gradient(180deg,var(--glass),transparent);border:1px solid var(--glass-border);padding:28px;border-radius:16px}
+    .headline{font-size:28px;margin:0 0 12px;line-height:1.05}
+    .sub{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid transparent;background:linear-gradient(90deg,var(--accent),#5b21b6);color:white;text-decoration:none;font-weight:600}
+    .btn.secondary{background:transparent;border:1px solid var(--glass-border);color:var(--muted)}
+
+    .profile-card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:22px;border-radius:14px;border:1px solid var(--glass-border);background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.01))}
+    .profile-photo{width:160px;height:160px;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.7);border:4px solid rgba(255,255,255,0.03)}
+    .profile-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .name{font-size:20px;margin:12px 0 6px}
+    .rol{color:var(--muted);margin:0}
+
+    /* Sections */
+    section{margin-top:24px}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .section-title h2{margin:0;font-size:18px}
+    .card{background:var(--card);border-radius:12px;padding:18px;border:1px solid var(--glass-border)}
+
+    /* Skills grid */
+    .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .skill{padding:10px;border-radius:10px;background:linear-gradient(180deg,var(--glass-2),transparent);border:1px solid rgba(255,255,255,0.02)}
+    .skill h3{margin:0 0 6px;font-size:14px}
+    .progress{height:8px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden}
+    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#3b82f6)}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .project{border-radius:10px;overflow:hidden;border:1px solid var(--glass-border)}
+    .project img{display:block;width:100%;height:160px;object-fit:cover}
+    .project .info{padding:12px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+
+    /* Experience timeline */
+    .timeline{display:flex;flex-direction:column;gap:10px}
+    .exp{display:flex;gap:12px;align-items:flex-start}
+    .exp .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:6px}
+    .exp .meta{color:var(--muted);font-size:13px}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:14px}
+    label{display:block;font-size:13px;margin-bottom:6px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid var(--glass-border);background:transparent;color:inherit}
+    textarea{min-height:120px}
+
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Small screens */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .contact-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      nav .nav-inner{padding:8px 12px}
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner container">
+      <div class="brand">
+        <div class="logo">YK</div>
+        <div>
+          <h1 style="font-size:14px;margin:0">Your Name</h1>
+          <div style="font-size:12px;color:var(--muted)">Web Developer • Frontend • UX-minded</div>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="hero-card">
+        <h2 class="headline">Hi — I'm <span style="background:linear-gradient(90deg,#fff, #dbeafe);-webkit-background-clip:text;background-clip:text;color:transparent;">Your Name</span><br><small style="font-weight:600;color:var(--muted)">I build beautiful, accessible websites and delightful user experiences.</small></h2>
+        <p class="sub">I'm a web developer focused on creating performant, responsive frontends using modern HTML, CSS, and JavaScript. I love turning ideas into products that people enjoy using.</p>
+
+        <div class="cta">
+          <a class="btn" href="#projects">See Projects</a>
+          <a class="btn secondary" href="#contact">Hire Me</a>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+          <div class="card" style="display:flex;gap:12px;align-items:center;min-width:220px">
+            <div style="font-weight:700;font-size:20px">5+</div>
+            <div>
+              <div style="font-size:13px;color:var(--muted)">Years Experience</div>
+              <div style="font-size:13px;color:var(--muted)">Frontend & UI</div>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex;gap:12px;align-items:center;min-width:220px">
+            <div style="font-weight:700;font-size:20px">20+</div>
+            <div>
+              <div style="font-size:13px;color:var(--muted)">Projects Delivered</div>
+              <div style="font-size:13px;color:var(--muted)">Web & Mobile</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="profile-photo">
+          <!-- Use a placeholder avatar. Replace with your image -->
+          <img src="https://i.pravatar.cc/400?img=12" alt="Your photo">
+        </div>
+        <div class="name">Your Name</div>
+        <div class="rol">Frontend Developer • React • Vanilla JS • CSS</div>
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <a class="btn" href="#contact">Contact</a>
+          <a class="btn secondary" href="#projects">Portfolio</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>About Me</h2>
+      </div>
+      <div class="card">
+        <p style="margin:0 0 10px">I'm a web developer with a passion for building performant and accessible user interfaces. I enjoy crafting pixel-perfect designs and translating them into responsive, maintainable code. Outside of web dev, I like photography and long bike rides.</p>
+
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:14px">
+          <div style="flex:1;min-width:240px">
+            <h3 style="margin:0 0 6px">Education</h3>
+            <div class="meta">B.Sc. / BCA in Computer Applications — Your University (2018 — 2021)</div>
+          </div>
+
+          <div style="flex:1;min-width:240px">
+            <h3 style="margin:0 0 6px">Professional</h3>
+            <div class="meta">Frontend Developer at Acme Corp (2022 — Present)<br>UI Engineer Intern at Studio XYZ (2021 — 2022)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title"><h2>Skills</h2></div>
+      <div class="skills">
+        <div class="skill card">
+          <h3>HTML &amp; Semantic Markup</h3>
+          <div class="progress" aria-hidden="true"><i style="width:95%"></i></div>
+        </div>
+        <div class="skill card">
+          <h3>CSS &amp; Responsive Design</h3>
+          <div class="progress" aria-hidden="true"><i style="width:92%"></i></div>
+        </div>
+        <div class="skill card">
+          <h3>JavaScript &amp; ES6+</h3>
+          <div class="progress" aria-hidden="true"><i style="width:88%"></i></div>
+        </div>
+        <div class="skill card">
+          <h3>React &amp; Component Design</h3>
+          <div class="progress" aria-hidden="true"><i style="width:80%"></i></div>
+        </div>
+        <div class="skill card">
+          <h3>Version Control (Git)</h3>
+          <div class="progress" aria-hidden="true"><i style="width:85%"></i></div>
+        </div>
+        <div class="skill card">
+          <h3>UI/UX &amp; Accessibility</h3>
+          <div class="progress" aria-hidden="true"><i style="width:78%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title"><h2>Selected Projects</h2></div>
+      <div class="projects">
+        <article class="project">
+          <img src="https://picsum.photos/seed/p1/800/400" alt="Project screenshot">
+          <div class="info">
+            <h3 style="margin:0">Multimart — Grocery Web App</h3>
+            <p style="margin:6px 0 0;color:var(--muted);font-size:14px">A full-stack grocery web app with admin dashboard, priority scheduling for deliveries, and product categorization.</p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">MySQL</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <img src="https://picsum.photos/seed/p2/800/400" alt="Project screenshot">
+          <div class="info">
+            <h3 style="margin:0">Car Rental System</h3>
+            <p style="margin:6px 0 0;color:var(--muted);font-size:14px">A management system for car rentals including admin interfaces, booking logic and analytics views.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">MySQL</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <img src="https://picsum.photos/seed/p3/800/400" alt="Project screenshot">
+          <div class="info">
+            <h3 style="margin:0">Admin Dashboard (Priority Scheduling)</h3>
+            <p style="margin:6px 0 0;color:var(--muted);font-size:14px">Dashboard demo showing priority scheduling visualization and multitasking controls for admin workflows.</p>
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">D3.js</span>
+              <span class="tag">UI</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-title"><h2>Experience</h2></div>
+      <div class="card timeline">
+        <div class="exp">
+          <div class="dot"></div>
+          <div>
+            <strong>Frontend Developer — Acme Corp</strong>
+            <div class="meta">June 2022 — Present • Bangalore, India</div>
+            <p style="margin:6px 0 0;color:var(--muted)">Built and maintained user-facing features for the main product, improved performance by 25% and led the accessibility initiative.</p>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="dot"></div>
+          <div>
+            <strong>UI Engineer Intern — Studio XYZ</strong>
+            <div class="meta">Jul 2021 — May 2022</div>
+            <p style="margin:6px 0 0;color:var(--muted)">Worked on component libraries and design-system work for client projects.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title"><h2>Contact</h2></div>
+      <div class="card contact-grid">
+        <div>
+          <form id="contactForm">
+            <label for="name">Name</label>
+            <input id="name" required placeholder="Your name">
+
+            <label for="email">Email</label>
+            <input id="email" type="email" required placeholder="you@example.com">
+
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell me about your project or opportunity"></textarea>
+
+            <div style="margin-top:10px">
+              <button type="submit" class="btn">Send Message</button>
+            </div>
+          </form>
+        </div>
+
+        <aside style="padding:12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+          <h3 style="margin:0">Get in touch</h3>
+          <div class="meta">Email: <a href="mailto:your.email@example.com">your.email@example.com</a></div>
+          <div class="meta">Location: Bangalore, India</div>
+
+          <div style="margin-top:10px;display:flex;gap:8px">
+            <a class="btn secondary" href="#">GitHub</a>
+            <a class="btn secondary" href="#">LinkedIn</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      Crafted with ❤️ • © <span id="year"></span> Your Name
+    </footer>
+  </main>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // smooth scroll + active nav on scroll
+    const links = document.querySelectorAll('.nav-links a');
+    function setActive(){
+      const fromTop = window.scrollY + 120;
+      links.forEach(l => {
+        const section = document.querySelector(l.getAttribute('href'));
+        if(!section) return;
+        if(section.offsetTop <= fromTop && (section.offsetTop + section.offsetHeight) > fromTop){
+          l.classList.add('active')
+        } else { l.classList.remove('active') }
+      })
+    }
+    window.addEventListener('scroll', setActive);
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if(!target) return;
+        window.scrollTo({top: target.offsetTop - 20, behavior:'smooth'});
+      })
+    })
+
+    // simple contact form demo (no backend)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email){
+        alert('Please add your name and email.');
+        return;
+      }
+      // replace this with a real endpoint later
+      alert('Thanks, ' + name + '! Your message was captured in the demo.');
+      this.reset();
+    });
+
+    // highlight nav on initial load
+    setActive();
+  </script>
+</body>
+</html>
